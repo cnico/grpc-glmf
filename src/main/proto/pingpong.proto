@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "fr.glmf.grpc";
+option java_outer_classname = "PingPongGRPC";
+
+package glmf.grpc;
+
+service PingPongService {
+
+  
+  rpc lancer(stream Ping) returns (stream Ping) {}
+  
+}
+
+enum CoupType {
+	SERVICE = 0;
+    RATE = 1;
+    REUSSI = 2;
+    FIN = 3;
+}
+	
+
+message Ping {
+    int32 numBalle = 2;
+	CoupType coup = 3;
+	int32 scorePing = 4;
+	int32 scorePong = 5;
+}
+
+
+
